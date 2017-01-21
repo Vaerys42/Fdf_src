@@ -1,46 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kboucaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/21 15:22:12 by kboucaud          #+#    #+#             */
-/*   Updated: 2017/01/21 15:22:14 by kboucaud         ###   ########.fr       */
+/*   Created: 2017/01/21 17:39:36 by kboucaud          #+#    #+#             */
+/*   Updated: 2017/01/21 17:39:38 by kboucaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
+#include "fdf.h"
 
-# define FDF_H
-
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include "mlx.h"
-
-char	**get_file(char *path);
-
-typedef struct  s_point
+int			main(int argc, char **argv)
 {
-	int			x;
-	int			y;
-	int			z;
-	t_point		*next;
-}				t_point;
+	char	**graph;
 
-typedef struct  s_repo
-{
-	void		*mlx;
-	void		*window;
-}				t_repo;
-
-typedef struct  s_file
-{
-	char		*line;
-	t_file		*next;
-}				t_file;
-
-#endif
+	if (argc != 2)
+	{
+		write(1, "Usage : ./fdf <filename>\n", 25);
+		return (0);
+	}
+	graph = get_file(argv[1]);
+	return (0);
+}
